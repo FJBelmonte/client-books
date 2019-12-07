@@ -1,9 +1,8 @@
 <strong>BEGIN API</strong><br>
-run `mkdir api`
-run `npm install json-server`
+run `mkdir api`<br>
+run `npm install json-server`<br>
 
-edit package.json
-
+edit package.json<br>
 ``` json
 {
   "name": "api",
@@ -17,19 +16,19 @@ edit package.json
 }
 ```
 
-create file named `db.json`
+create file named `db.json`<br>
 
-edit db.json
+edit db.json<br>
 ```json
 {
   "books": []
 }
 ```
-run`npm start`
+run`npm start`<br>
 <strong>END API</strong></br>
 
 
-then cd.. 
-then cd client
+then cd.. <br>
+then cd client<br>
 
-run`npm start`
+run`npm start`<br>
