@@ -1,4 +1,4 @@
-<strong>BEGIN API</stron>
+<strong>BEGIN API</strong><br>
 run `mkdir api`
 run `npm install json-server`
 
@@ -26,7 +26,7 @@ edit db.json
 }
 ```
 run`npm start`
-<strong>END API</stron>
+<strong>END API</strong></br>
 
 
 then cd.. 
