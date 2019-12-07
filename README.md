@@ -1,4 +1,4 @@
-// BEGIN API
+<strong>BEGIN API</stron>
 run `mkdir api`
 run `npm install json-server`
 
@@ -20,13 +20,13 @@ edit package.json
 create file named `db.json`
 
 edit db.json
-```
+```json
 {
   "books": []
 }
 ```
 run`npm start`
-// END API
+<strong>END API</stron>
 
 
 then cd.. 
