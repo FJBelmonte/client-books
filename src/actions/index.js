@@ -1,55 +1,39 @@
-import streams from "../apis/streams";
+import books from "../apis/books";
 import {
-  SIGN_IN,
-  SIGN_OUT,
-  CREATE_STREAM,
-  EDIT_STREAM,
-  DELETE_STREAM,
-  FETCH_STREAM,
-  FETCH_STREAMS
+  CREATE_BOOK,
+  EDIT_BOOK,
+  DELETE_BOOK,
+  FETCH_BOOK,
+  FETCH_BOOKS
 } from "./types";
 
 import history from "../history";
 
-export const signIn = userId => {
-  return {
-    type: SIGN_IN,
-    payload: userId
-  };
-};
+export const createBook = formValues => async (dispatch, getState) => {
+  const response = await books.post("/books", { ...formValues });
 
-export const signOut = () => {
-  return {
-    type: SIGN_OUT
-  };
-};
-
-export const createStream = formValues => async (dispatch, getState) => {
-  const { userId } = getState().auth;
-  const response = await streams.post("/streams", { ...formValues, userId });
-
-  dispatch({ type: CREATE_STREAM, payload: response.data });
+  dispatch({ type: CREATE_BOOK, payload: response.data });
 
   history.push("/");
 };
 
-export const fetchStreams = () => async dispatch => {
-  const response = await streams.get("/streams");
-  dispatch({ type: FETCH_STREAMS, payload: response.data });
+export const fetchBooks = () => async dispatch => {
+  const response = await books.get("/books");
+  dispatch({ type: FETCH_BOOKS, payload: response.data });
 };
-export const fetchStream = id => async dispatch => {
-  const response = await streams.get(`/streams/${id}`);
-  dispatch({ type: FETCH_STREAM, payload: response.data });
+export const fetchBook = id => async dispatch => {
+  const response = await books.get(`/books/${id}`);
+  dispatch({ type: FETCH_BOOK, payload: response.data });
 };
 
-export const editStream = (id, formValues) => async dispatch => {
-  const response = await streams.patch(`/streams/${id}`, formValues);
-  dispatch({ type: EDIT_STREAM, payload: response.data });
+export const editBook = (id, formValues) => async dispatch => {
+  const response = await books.patch(`/books/${id}`, formValues);
+  dispatch({ type: EDIT_BOOK, payload: response.data });
   history.push("/");
 };
 
-export const deleteStream = id => async dispatch => {
-  await streams.delete(`/streams/${id}`);
-  dispatch({ type: DELETE_STREAM, payload: id });
+export const deleteBook = id => async dispatch => {
+  await books.delete(`/books/${id}`);
+  dispatch({ type: DELETE_BOOK, payload: id });
   history.push("/");
 };

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 
-class StreamForm extends Component {
+class BookForm extends Component {
   renderError({ error, touched }) {
     if (touched && error) {
       return (
-        <div className="ui error message">
-          <div className="header">{error}</div>
+        <div className='ui error message'>
+          <div className='header'>{error}</div>
         </div>
       );
     }
@@ -16,7 +16,7 @@ class StreamForm extends Component {
     return (
       <div className={className}>
         <label>{label}</label>
-        <input {...input} autoComplete="off" />
+        <input {...input} autoComplete='off' />
         {this.renderError(meta)}
       </div>
     );
@@ -28,15 +28,18 @@ class StreamForm extends Component {
     return (
       <form
         onSubmit={this.props.handleSubmit(this.onSubmit)}
-        className="ui form error"
-      >
-        <Field name="title" component={this.renderInput} label="Enter title" />
+        className='ui form error'>
         <Field
-          name="description"
+          name='title'
           component={this.renderInput}
-          label="Enter description"
+          label='Digite o título do livro'
         />
-        <button className="ui button primary">Submit</button>
+        <Field
+          name='description'
+          component={this.renderInput}
+          label='Digite a descrição do livro'
+        />
+        <button className='ui button primary'>Enviar</button>
       </form>
     );
   }
@@ -45,15 +48,15 @@ class StreamForm extends Component {
 const validate = formValues => {
   const erros = {};
   if (!formValues.title) {
-    erros.title = "You must enter a title";
+    erros.title = "Você precisa inserir o título";
   }
   if (!formValues.description) {
-    erros.description = "You must enter a description";
+    erros.description = "Você precisa inserir a descrição";
   }
   return erros;
 };
 
 export default reduxForm({
-  form: "streamForm",
+  form: "bookForm",
   validate
-})(StreamForm);
+})(BookForm);

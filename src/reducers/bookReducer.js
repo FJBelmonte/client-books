@@ -1,23 +1,23 @@
 import _ from "lodash";
 import {
-  FETCH_STREAM,
-  FETCH_STREAMS,
-  CREATE_STREAM,
-  EDIT_STREAM,
-  DELETE_STREAM
+  FETCH_BOOK,
+  FETCH_BOOKS,
+  CREATE_BOOK,
+  EDIT_BOOK,
+  DELETE_BOOK
 } from "../actions/types";
 
 export default (state = {}, action) => {
   switch (action.type) {
-    case FETCH_STREAM:
+    case FETCH_BOOK:
       return { ...state, [action.payload.id]: action.payload };
-    case FETCH_STREAMS:
+    case FETCH_BOOKS:
       return { ...state, ..._.mapKeys(action.payload, "id") };
-    case CREATE_STREAM:
+    case CREATE_BOOK:
       return { ...state, [action.payload.id]: action.payload };
-    case EDIT_STREAM:
+    case EDIT_BOOK:
       return { ...state, [action.payload.id]: action.payload };
-    case DELETE_STREAM:
+    case DELETE_BOOK:
       return _.omit(state, action.payload); //Payload is the ID from action
     default:
       return state;
